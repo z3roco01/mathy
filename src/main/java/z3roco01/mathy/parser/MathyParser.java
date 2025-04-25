@@ -41,12 +41,16 @@ public class MathyParser {
                 char chr = curChar;
                 int numIdx = idx;
                 // find the bounds of this number
-                while(Character.isDigit(chr) && ++numIdx<equation.length())
+                // also need to account for decimal points, since it supports decimals
+                while((Character.isDigit(chr) | chr == '.') && ++numIdx<equation.length())
                     chr = equation.charAt(numIdx);
 
                 // get the characters that compose the number as a string
                 String numberStr = equation.substring(idx, numIdx);
-                System.out.println(numberStr);
+
+                // turn the number into a symbol node
+                temp = new SymbolNode(Symbol.NUM, null, null, null, Double.parseDouble(numberStr));
+                System.out.println(temp);
 
                 // and set the index to the end of the number, so it doesnt keep going over it
                 // -1 since it adds one at the start

@@ -8,17 +8,22 @@ import z3roco01.mathy.parser.symbols.Symbol;
 public class SymbolNode {
     public Symbol symbol;
     // any data that goes along with the symbol
-    public Double data = 0.0;
+    public Double data;
     private SymbolNode parent;
     // the two children
     private SymbolNode left;
     private SymbolNode right;
 
-    public SymbolNode(Symbol symbol, SymbolNode parent, SymbolNode left, SymbolNode right) {
+    public SymbolNode(Symbol symbol, SymbolNode parent, SymbolNode left, SymbolNode right, Double data) {
         this.symbol = symbol;
         this.parent = parent;
         this.left = left;
         this.right = right;
+        this.data = data;
+    }
+
+    public SymbolNode(Symbol symbol, SymbolNode parent, SymbolNode left, SymbolNode right) {
+        this(symbol, parent, left, right, 0.0);
     }
 
     public SymbolNode getParent() {
