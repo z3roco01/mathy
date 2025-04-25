@@ -8,7 +8,7 @@ import z3roco01.mathy.parser.symbols.Symbol;
 public class SymbolNode {
     public Symbol symbol;
     // any data that goes along with the symbol
-    public double data;
+    public Double data = 0.0;
     private SymbolNode parent;
     // the two children
     private SymbolNode left;
@@ -31,5 +31,10 @@ public class SymbolNode {
 
     public SymbolNode getRight() {
         return right;
+    }
+
+    @Override
+    public String toString() {
+        return symbol.name() + " " + data.toString();
     }
 }
