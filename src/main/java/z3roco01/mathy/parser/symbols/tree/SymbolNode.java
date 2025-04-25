@@ -1,0 +1,33 @@
+package z3roco01.mathy.parser.symbols.tree;
+
+import z3roco01.mathy.parser.symbols.Symbol;
+
+/**
+ * used in the equation tree, holds the symbol of this node, its parent and children
+ */
+public class SymbolNode {
+    public Symbol symbol;
+    private SymbolNode parent;
+    // the two children
+    private SymbolNode left;
+    private SymbolNode right;
+
+    public SymbolNode(Symbol symbol, SymbolNode parent, SymbolNode left, SymbolNode right) {
+        this.symbol = symbol;
+        this.parent = parent;
+        this.left = left;
+        this.right = right;
+    }
+
+    public SymbolNode getParent() {
+        return parent;
+    }
+
+    public SymbolNode getLeft() {
+        return left;
+    }
+
+    public SymbolNode getRight() {
+        return right;
+    }
+}
