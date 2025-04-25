@@ -7,6 +7,8 @@ import z3roco01.mathy.parser.symbols.Symbol;
  */
 public class SymbolNode {
     public Symbol symbol;
+    // any data that goes along with the symbol
+    public double data;
     private SymbolNode parent;
     // the two children
     private SymbolNode left;

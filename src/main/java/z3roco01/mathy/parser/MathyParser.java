@@ -16,8 +16,13 @@ public class MathyParser {
     /**
      * parses the held equation string, returns the result, will return 0 on error
      * @return the result of the equation, or 0 if error
+     *
      */
     public double parse(){
+        // obv cant do anything on a blank string
+        if(equation.isBlank())
+            return 0;
+
         // hold the current char, defined outside as optimization
         char curChar = ' ';
         // loop over every character
@@ -27,6 +32,8 @@ public class MathyParser {
             // obv dont do anything with whitespace
             if(Character.isWhitespace(curChar))
                 continue;
+
+            System.out.print(curChar);
         }
         return 0;
     }

@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2d3ca411-1ffe-4448-8653-15e581b2a7b6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/parser/MathyParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/parser/symbols/Symbol.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/parser/symbols/tree/EquationTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/parser/symbols/tree/SymbolNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/parser/MathyParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/parser/MathyParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/parser/symbols/tree/SymbolNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/parser/symbols/tree/SymbolNode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,17 +36,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "F:/codeThingys/java/mathy"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/codeThingys/java/mathy&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="z3roco01.mathy.Main" />
