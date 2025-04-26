@@ -4,7 +4,11 @@ package z3roco01.mathy.parser.symbols.tree;
  * tree holding the symbols of the equation
  */
 public class EquationTree {
-    private SymbolNode root;
+    public final SymbolNode root;
+
+    public EquationTree(SymbolNode root) {
+        this.root = root;
+    }
 
     /**
      * adds a new node as a child of a specific node, will override children and parents

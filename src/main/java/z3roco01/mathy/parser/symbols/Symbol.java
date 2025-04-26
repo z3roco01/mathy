@@ -21,7 +21,7 @@ public enum Symbol {
     /**
      * used in tree creation, if set this will have the ability to become a root/parent
      */
-    final Boolean isOperator;
+    public final Boolean isOperator;
     Symbol(Character Symbol, Boolean isOperator) {
         this.character = Symbol;
         this.isOperator = isOperator;

@@ -33,6 +33,13 @@ public class SymbolNode {
         return hasParent() && !(hasLeft() || hasRight());
     }
 
+    /**
+     * @return true of the symbol is an operator, the same as symbol.isOperator
+     */
+    public boolean isOperator() {
+        return symbol.isOperator;
+    }
+
     public boolean hasParent() {
         return parent != null;
     }

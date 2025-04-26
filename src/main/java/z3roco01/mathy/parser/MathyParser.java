@@ -1,9 +1,11 @@
 package z3roco01.mathy.parser;
 
 import z3roco01.mathy.parser.symbols.Symbol;
+import z3roco01.mathy.parser.symbols.tree.EquationTree;
 import z3roco01.mathy.parser.symbols.tree.SymbolNode;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * parses a provided equation string
@@ -30,8 +32,8 @@ public class MathyParser {
         // create the flat list of nodes
         ArrayList<SymbolNode> flatNodes = parseSymbols();
 
-        for(SymbolNode node : flatNodes)
-            System.out.println(node);
+        // form the flat list into a tree
+        EquationTree tree = createTree(flatNodes);
 
         return 0;
     }
@@ -78,6 +80,96 @@ public class MathyParser {
         }
 
         return symbolNodes;
+    }
+
+    /**
+     * forms an EquationTree from a flat list created by parseSymbols
+     * @param nodeList the flat list of nodes
+     * @return the tree from the symbols, null on any error
+     */
+    public EquationTree createTree(ArrayList<SymbolNode> nodeList) {
+        // obv cant create a tree from nothing
+        if(nodeList.isEmpty())
+            return null;
+
+        SymbolNode root = null;
+        int rootIdx = 0;
+        SymbolNode curNode;
+        // loop over the list until there is an operator, this will be the root
+        // use index looping since it needs the index for later
+        for(int idx=0; idx<nodeList.size(); ++idx) {
+            curNode = nodeList.get(idx);
+
+            if(curNode.isOperator()) {
+                // save the node and break out of the loop
+                root = curNode;
+                rootIdx = idx;
+                break;
+            }
+        }
+
+        // cant do math if theres no operators, so return null
+        if(root == null)
+            return null;
+
+        EquationTree tree = new EquationTree(root);
+
+        // next, recursivly find the right and left symbols, they can also be an operator, so it must account for that
+        findSide(nodeList, tree, root, rootIdx, true);
+        findSide(nodeList, tree, root, rootIdx, false);
+
+        System.out.println(root.left.toString() + " <- " + root + " -> " + root.right.toString());
+
+        return tree;
+    }
+
+    /**
+     * will find the side that is requested, will also take into account operators, and them needing their sides found
+     * @param nodeList the flat node list
+     * @param tree the EquationTree being made currently
+     * @param parent the parent whoes side is being found
+     * @param idx the index of the parent operator
+     * @param left true if finding the left side, false otherwise
+     */
+    private void findSide(List<SymbolNode> nodeList, EquationTree tree, SymbolNode parent, int idx, boolean left) {
+        // first create the bounds being searched
+        int lowerBound;
+        int upperBound;
+
+        // subList is exclusive on the upperbound, so it doesnt need to be subbed
+        if(left) { // if left is being searched, search from 0 to just before the operator
+            lowerBound = 0;
+            upperBound = idx;
+        }else { // if right, searched from just after operator till the end
+            lowerBound = idx+1;
+            upperBound = nodeList.size();
+        }
+
+        // now get the arraylist for this bound
+        List<SymbolNode> searchArea = nodeList.subList(lowerBound, upperBound);
+        // do this if left, so that search will go away from the parent
+        if(left) searchArea = searchArea.reversed();
+
+        // then search for the first operator from the original, if found, run this on it
+        for(SymbolNode node : searchArea) {
+            if(node.isOperator()) {
+                // add this node as a child
+                tree.addNode(parent, node, left);
+                // then set its sides
+                findSide(searchArea, tree, node, searchArea.indexOf(node), true);
+                findSide(searchArea, tree, node, searchArea.indexOf(node), false);
+                // everything would be parsed if and operator is found, so just return
+                return;
+            }
+        }
+        // must only be a number, or there is a bug, but either way, add the correct node as a child straight up
+        SymbolNode newChild;
+        if(left)
+            newChild = nodeList.get(idx-1);
+        else
+            newChild = nodeList.get(idx+1);
+
+        tree.addNode(parent, newChild, left);
     }
 
     /**
