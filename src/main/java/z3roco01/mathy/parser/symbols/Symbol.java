@@ -6,22 +6,25 @@ import java.util.Map;
 import java.util.Optional;
 
 public enum Symbol {
-    ADD('+'),
-    SUB('-'),
-    MUL('*'),
-    DIV('/'),
-    EXPO('^'),
-    LEFT_PAREN('('),
-    RIGHT_PAREN(')'),
-    NUM('\0'); // does not have a symbol, since it will be parsed dif
+    ADD('+', true),
+    SUB('-', true),
+    MUL('*', true),
+    DIV('/', true),
+    EXPO('^', true),
+    NUM('\0', false); // does not have a symbol, since it will be parsed dif
 
     /**
      * the character that corisponds to this symbol
      * will be \0 if there isnt one
      */
     final Character character;
-    Symbol(Character Symbol) {
+    /**
+     * used in tree creation, if set this will have the ability to become a root/parent
+     */
+    final Boolean isOperator;
+    Symbol(Character Symbol, Boolean isOperator) {
         this.character = Symbol;
+        this.isOperator = isOperator;
     }
 
     private static Map<Character, Symbol> createMap() {

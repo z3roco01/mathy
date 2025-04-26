@@ -3,6 +3,8 @@ package z3roco01.mathy.parser;
 import z3roco01.mathy.parser.symbols.Symbol;
 import z3roco01.mathy.parser.symbols.tree.SymbolNode;
 
+import java.util.ArrayList;
+
 /**
  * parses a provided equation string
  */
@@ -26,6 +28,23 @@ public class MathyParser {
         if(equation.isBlank())
             return 0;
 
+        // create the flat list of nodes
+        ArrayList<SymbolNode> flatNodes = parseSymbols();
+
+        for(SymbolNode node : flatNodes)
+            System.out.println(node);
+
+        return 0;
+    }
+
+    /**
+     * creates an initial flat list of SymbolNodes, is the first step of parsing
+     * is made into a tree afterwards
+     * @return the flat list of symbols
+     */
+    private ArrayList<SymbolNode> parseSymbols() {
+        ArrayList<SymbolNode> symbolNodes = new ArrayList<>();
+
         // hold the current char, defined outside as optimization
         char curChar;
         SymbolNode temp;
@@ -48,19 +67,38 @@ public class MathyParser {
                 // get the characters that compose the number as a string
                 String numberStr = equation.substring(idx, numIdx);
 
-                // turn the number into a symbol node
-                temp = new SymbolNode(Symbol.NUM, null, null, null, Double.parseDouble(numberStr));
-                System.out.println(temp);
+                // add the number to the symbol list
+                addNode(symbolNodes, Symbol.NUM, Double.parseDouble(numberStr));
 
                 // and set the index to the end of the number, so it doesnt keep going over it
                 // -1 since it adds one at the start
                 idx = numIdx-1;
             }else if(Symbol.isSymbol(curChar)) {
-                temp = new SymbolNode(Symbol.ofChar(curChar).get(), null, null, null);
-                System.out.println(temp);
+                // simply get the symbol the character aligns with and add it to the list
+                addNode(symbolNodes, Symbol.ofChar(curChar).get());
             }
         }
 
-        return 0;
+        return symbolNodes;
+    }
+
+    /**
+     * util function to add a new symbol node to the passed array list
+     * creates a new one with no parents or children, that has a specified symbol and data
+     * @param arrayList the ArrayList to add to
+     * @param symbol the Symbol of the new SymbolNode
+     * @param data the data of the new SymbolNode
+     */
+    private static void addNode(ArrayList<SymbolNode> arrayList, Symbol symbol, Double data) {
+        arrayList.add(new SymbolNode(symbol, null, null, null, data));
+    }
+
+    /**
+     * like the other add node, but doesnt take in data, just for simplification
+     * @param arrayList the ArrayList to add to
+     * @param symbol the Symbol of the new SymbolNode
+     */
+    private static void addNode(ArrayList<SymbolNode> arrayList, Symbol symbol) {
+        addNode(arrayList, symbol, 0.0);
     }
 }
