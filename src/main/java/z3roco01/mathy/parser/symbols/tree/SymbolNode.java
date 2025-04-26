@@ -9,10 +9,10 @@ public class SymbolNode {
     public Symbol symbol;
     // any data that goes along with the symbol
     public Double data;
-    private SymbolNode parent;
+    public SymbolNode parent;
     // the two children
-    private SymbolNode left;
-    private SymbolNode right;
+    public SymbolNode left;
+    public SymbolNode right;
 
     public SymbolNode(Symbol symbol, SymbolNode parent, SymbolNode left, SymbolNode right, Double data) {
         this.symbol = symbol;
@@ -26,16 +26,23 @@ public class SymbolNode {
         this(symbol, parent, left, right, 0.0);
     }
 
-    public SymbolNode getParent() {
-        return parent;
+    /**
+     * @return true if it has no children and a parent
+     */
+    public boolean isLeaf() {
+        return hasParent() && !(hasLeft() || hasRight());
     }
 
-    public SymbolNode getLeft() {
-        return left;
+    public boolean hasParent() {
+        return parent != null;
     }
 
-    public SymbolNode getRight() {
-        return right;
+    public boolean hasLeft() {
+        return left != null;
+    }
+
+    public boolean hasRight() {
+        return right != null;
     }
 
     @Override

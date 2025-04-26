@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d3ca411-1ffe-4448-8653-15e581b2a7b6" name="Changes" comment="add decimal support, and create number symbols">
+    <list default="true" id="2d3ca411-1ffe-4448-8653-15e581b2a7b6" name="Changes" comment="start real tree creation by creating a flat list">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/parser/MathyParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/parser/MathyParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/parser/symbols/Symbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/parser/symbols/Symbol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/parser/symbols/tree/EquationTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/parser/symbols/tree/EquationTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/parser/symbols/tree/SymbolNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/parser/symbols/tree/SymbolNode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,13 +93,22 @@
       <option name="project" value="LOCAL" />
       <updated>1745625221874</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="start real tree creation by creating a flat list">
+      <option name="closed" value="true" />
+      <created>1745626760644</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1745626760644</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="start a basic symbol + number parser ( also add a few util funcs )" />
     <MESSAGE value="add decimal support, and create number symbols" />
-    <option name="LAST_COMMIT_MESSAGE" value="add decimal support, and create number symbols" />
+    <MESSAGE value="start real tree creation by creating a flat list" />
+    <option name="LAST_COMMIT_MESSAGE" value="start real tree creation by creating a flat list" />
   </component>
 </project>

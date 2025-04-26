@@ -21,7 +21,6 @@ public class MathyParser {
     /**
      * parses the held equation string, returns the result, will return 0 on error
      * @return the result of the equation, or 0 if error
-     *
      */
     public double parse() {
         // obv cant do anything on a blank string
@@ -47,7 +46,6 @@ public class MathyParser {
 
         // hold the current char, defined outside as optimization
         char curChar;
-        SymbolNode temp;
         // loop over every character
         for(int idx=0; idx<equation.length(); ++idx) {
             curChar = equation.charAt(idx);
