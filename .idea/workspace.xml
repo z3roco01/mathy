@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d3ca411-1ffe-4448-8653-15e581b2a7b6" name="Changes" comment="add some util">
+    <list default="true" id="2d3ca411-1ffe-4448-8653-15e581b2a7b6" name="Changes" comment="i think the tree will be made well now ( who knows )">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/parser/MathyParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/parser/MathyParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/parser/symbols/Symbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/parser/symbols/Symbol.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/parser/symbols/tree/EquationTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/parser/symbols/tree/EquationTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/parser/symbols/tree/SymbolNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/z3roco01/mathy/parser/symbols/tree/SymbolNode.java" afterDir="false" />
     </list>
@@ -110,7 +110,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745627674051</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="i think the tree will be made well now ( who knows )">
+      <option name="closed" value="true" />
+      <created>1745629625287</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1745629625287</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -119,6 +127,7 @@
     <MESSAGE value="add decimal support, and create number symbols" />
     <MESSAGE value="start real tree creation by creating a flat list" />
     <MESSAGE value="add some util" />
-    <option name="LAST_COMMIT_MESSAGE" value="add some util" />
+    <MESSAGE value="i think the tree will be made well now ( who knows )" />
+    <option name="LAST_COMMIT_MESSAGE" value="i think the tree will be made well now ( who knows )" />
   </component>
 </project>

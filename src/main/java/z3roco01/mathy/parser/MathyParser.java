@@ -12,6 +12,7 @@ import java.util.List;
  */
 public class MathyParser {
     public String equation = "";
+    private EquationTree tree;
 
     public MathyParser(String equation) {
         this.equation = equation;
@@ -21,21 +22,20 @@ public class MathyParser {
     public MathyParser(){}
 
     /**
-     * parses the held equation string, returns the result, will return 0 on error
-     * @return the result of the equation, or 0 if error
+     * parses the held equation string into the held tree
      */
-    public double parse() {
+    public void parse() {
         // obv cant do anything on a blank string
         if(equation.isBlank())
-            return 0;
+            return;
+
+        tree = null;
 
         // create the flat list of nodes
         ArrayList<SymbolNode> flatNodes = parseSymbols();
 
         // form the flat list into a tree
-        EquationTree tree = createTree(flatNodes);
-
-        return 0;
+        tree = createTree(flatNodes);
     }
 
     /**
@@ -112,13 +112,11 @@ public class MathyParser {
         if(root == null)
             return null;
 
-        EquationTree tree = new EquationTree(root);
+        tree = new EquationTree(root);
 
         // next, recursivly find the right and left symbols, they can also be an operator, so it must account for that
-        findSide(nodeList, tree, root, rootIdx, true);
-        findSide(nodeList, tree, root, rootIdx, false);
-
-        System.out.println(root.left.toString() + " <- " + root + " -> " + root.right.toString());
+        findSide(nodeList, root, rootIdx, true);
+        findSide(nodeList, root, rootIdx, false);
 
         return tree;
     }
@@ -126,12 +124,11 @@ public class MathyParser {
     /**
      * will find the side that is requested, will also take into account operators, and them needing their sides found
      * @param nodeList the flat node list
-     * @param tree the EquationTree being made currently
      * @param parent the parent whoes side is being found
      * @param idx the index of the parent operator
      * @param left true if finding the left side, false otherwise
      */
-    private void findSide(List<SymbolNode> nodeList, EquationTree tree, SymbolNode parent, int idx, boolean left) {
+    private void findSide(List<SymbolNode> nodeList, SymbolNode parent, int idx, boolean left) {
         // first create the bounds being searched
         int lowerBound;
         int upperBound;
@@ -156,8 +153,8 @@ public class MathyParser {
                 // add this node as a child
                 tree.addNode(parent, node, left);
                 // then set its sides
-                findSide(searchArea, tree, node, searchArea.indexOf(node), true);
-                findSide(searchArea, tree, node, searchArea.indexOf(node), false);
+                findSide(searchArea, node, searchArea.indexOf(node), true);
+                findSide(searchArea, node, searchArea.indexOf(node), false);
                 // everything would be parsed if and operator is found, so just return
                 return;
             }
@@ -170,6 +167,62 @@ public class MathyParser {
             newChild = nodeList.get(idx+1);
 
         tree.addNode(parent, newChild, left);
+    }
+
+    /**
+     * will evaluate the held tree
+     * @return the result of the equation
+     */
+    public double evaluate() {
+        // if the left is not a leaf, its side had to be evaled
+        if(!tree.root.left.isLeaf()) {
+            checkSide(tree.root.left, true);
+            checkSide(tree.root.left, false);
+        }
+        if(!tree.root.right.isLeaf()) {
+            checkSide(tree.root.left, true);
+            checkSide(tree.root.left, false);
+        }
+
+        return eval(tree.root, tree.root.left.data, tree.root.right.data);
+    }
+
+    private void checkSide(SymbolNode parent, boolean left) {
+        if(parent.isLeaf() || parent.getSide(left) == null) return;
+
+        // if there are two leaf children, then eval this operator
+        if(parent.left.isLeaf() && parent.right.isLeaf()) {
+            double result = eval(parent, parent.left.data, parent.right.data);
+            tree.replaceNode(parent.parent, new SymbolNode(Symbol.NUM, null, null, null, result), parent);
+        }else {
+            // check both sides of the children
+            if(parent.left != null && !parent.left.isLeaf()) {
+                checkSide(parent.left, true);
+                checkSide(parent.left, false);
+            }
+            if(parent.right != null && !parent.right.isLeaf()) {
+                checkSide(parent.right, true);
+                checkSide(parent.right, false);
+            }
+        }
+    }
+
+    /**
+     * evaluates a single symbol and returns the result
+     * @param symbol the symbol operator
+     * @param left the left side of the equation
+     * @param right the right side of the equation
+     * @return the result of the equation
+     */
+    private double eval(SymbolNode symbol, double left, double right) {
+        return switch(symbol.symbol) {
+            case ADD -> left+right;
+            case SUB -> left-right;
+            case MUL -> left*right;
+            case DIV -> left/right;
+            case EXPO -> Math.pow(left, right);
+            case NUM -> 0.0; // should never happen
+        };
     }
 
     /**

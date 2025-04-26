@@ -26,4 +26,22 @@ public class EquationTree {
 
         newNode.parent = parent;
     }
+
+    /**
+     * replaces a parents child with a new node
+     * @param parent the parent whos child is being replaced
+     * @param newChild the new child to be set
+     * @param  oldChild the old child to be replaced
+     */
+    public void replaceNode(SymbolNode parent, SymbolNode newChild, SymbolNode oldChild) {
+        if(parent.left == oldChild) {
+            parent.left = newChild;
+            newChild.parent = parent;
+            oldChild.parent = null;
+        }else if(parent.right == oldChild) {
+            parent.right = newChild;
+            newChild.parent = parent;
+            oldChild.parent = null;
+        }
+    }
 }

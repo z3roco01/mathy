@@ -52,8 +52,21 @@ public class SymbolNode {
         return right != null;
     }
 
+    /**
+     * @param Left true if the left child should be return, false if right
+     * @return the left or right child
+     */
+    public SymbolNode getSide(boolean Left) {
+        if(Left) return left;
+        return right;
+    }
+
     @Override
     public String toString() {
         return symbol.name() + " " + data.toString();
+    }
+
+    public String toStringWithChildren() {
+        return left.toString() + " <- " + this + " -> " + right.toString();
     }
 }

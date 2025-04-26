@@ -6,5 +6,6 @@ public class Main {
     public static void main(String[] args) {
         MathyParser parser = new MathyParser("64+128.16");
         parser.parse();
+        System.out.println(parser.evaluate());
     }
 }
